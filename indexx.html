@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/ticket.css">
+  <link rel="stylesheet" href="./styles/dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <div class="nav-bar">
+      <ul>
+        <img class="logo" width="150px" src="./assests/images/logo.png"/>
+        <li><a class = "nav-links" href="#" class="active"  onclick="showContent('dashboard')">Dashboard</a></li>
+        <li><a class = "nav-links" href="#" onclick="showContent('settings')">New Ticket</a></li>
+        <li><a  class = "nav-links" href="#"  onclick="showContent('customers')">Customers</a></li>
+        <li><a class = "nav-links" href="#"  onclick="showContent('users')">Users</a></li>
+        <li><a class = "nav-links" href="#" onclick="showContent('reports')">Reports</a></li>
+        
+      </ul>
+    </div>
+    <div class="content">
+      <div class="dashboard" id="dashboard" style="display: block;">
+        <div class="header">
+          <h1>DashBoard</h1>
+          <button id="c-button" class="create-ticket">Create New Ticket </button>
+          
+        </div>
+        <div class="stats">
+          <div class="stat-box t1">
+            <div class="stat-icon total-icon"><img src="./assests/images/all.png" width="35px"></div>
+            <h3>Total Calls</h3>
+            <p>1453</p>
+          </div>
+          <div class="stat-box t2 ">
+            <div class="stat-icon pending-icon"><img src="./assests/images/pending.png" width="35px"></div>
+            <h3>Pending Calls</h3>
+            <p>53</p>
+          </div>
+          <div class="stat-box t3 ">
+            <div class="stat-icon completed-icon"><img src="./assests/images/completed.png" width="35px"></div>
+            <h3>Completed Calls</h3>
+            <p>323</p>
+          </div>
+          <div class="stat-box t4 ">
+            <div class="stat-icon inhouse-icon"><img src="./assests/images/inhouse.png" width="35px"></div>
+            <h3>Inhouse Calls</h3>
+            <p>13</p>
+          </div>
+        </div>
+        <div class="filters">
+          <div class="search">
+            <label for="search">Search By</label>
+            <input type="text" id="search" placeholder="Search by Cust Name or Call Number or Mobile">
+          </div>
+          <div class="filter">
+            <label for="from">Filter By</label>
+            <div class="date-filters">
+              <input type="date" id="from">
+              <span>to</span>
+              <input type="date" id="to">
+              <select>
+                <option value="all">All</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="customers_c" id="customers" style="display: none;"> 
+        
+        <div class="switch-container">
+          <div class="switch-indicator"></div>
+          <button id="customerAdd" class="btn_active"  >Add Customer</button>
+          <button id="customerData">Customer Data</button>
+
+
+        </div>
+        
+       
+     <div id ="custform" class="customerForm" style="display: block;">
+      <form id="customerForm">
+        <label for="customerType">Select Customer Type:</label>
+        <select id="customerType" name="customerType">
+            <option value="individual">Individual</option>
+            <option value="company">Company</option>
+        </select>
+        <div class="companyDetails">
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="companyName" name="companyName">
+            
+            <label for="companyGST">Company GST Number:</label>
+            <input type="text" id="companyGST" name="companyGST">
+        </div>
+        <label for="companyContactPersonName">Contact Person Name:</label>
+        <input type="text" id="customerName" name="customerName" required>
+        
+        <label for="customerContact"> Contact Number:</label>
+        <input type="text" id="customerContact" name="customerContact" required>
+        
+        <label for="CompanyAddress">Address:</label>
+        <input type="text" id="CompanyAddress" name="CompanyAddress" required>
+        
+        
+        
+        <button type="submit">Submit</button>
+    </form>
+     </div>  
+
+     <div id="custdata" class="customerdata">
+
+      <div class="filter">
+        <label for="filterType">Filter Customers:</label>
+        <div class="droppie">
+
+          <select id="filterType">
+            <option value="all">All</option>
+            <option value="individual">Individual</option>
+            <option value="company">Company</option>
+          </select>
+        </div>
+        </div>
+        
+      <div  class="users" id="users_id">
+        <h1 id="heading">Customers</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Address</th>
+              <th>Type</th>
+              <th>Company Name</th>
+              <th>Company GST</th>
+            </tr>
+          </thead>
+          <tbody   id="customerTableBody">
+            <!-- Dynamic data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    
+    </div>
+    
+
+      </div>
+
+      <div class="userss" id="userss" style="display: none;">
+        
+      </div>
+      <div class="settings" id="settings" style="display: none;">
+        <div class="ticket" id="userss" style="display: block;">
+          <div class="ticketcontanier">
+            <div class="section1  secti">
+              <div class="heading">
+                <h3>New Ticket</h3>
+              </div>
+            </div>
+            <div class="section2 sections">
+              <div class="sec21">
+                <div class="customertype">
+                    <div class="label">
+                      <h5>Select Cutomer Type</h5>
+                      <select name="category" id="customercategory">
+                        <option value="Individual">Individual</option>
+                        <option value="Company">Company</option>
+    
+                      </select>
+                    </div>
+                </div>
+              </div>
+              <div class="sec22">
+                <div class="customertype">
+                    <div class="label">
+                      <h5>Log Date</h5>
+                      <input type="date" name="logdt" id="logdate">
+                    </div>
+                </div>
+              </div>
+              <div class="sec23">
+                <div class="searchcustomer">
+                    <div class="label">
+                      <h5>Search Customer</h5>
+                     <input type="number" name="mobile" id="mobilenumber" placeholder="Mobile Number">
+                    </div>
+                </div>
+              </div>
+              <div class="sec24">
+                <div class="serviceType">
+                    <div class="label">
+                      <h5>Search Customer</h5>
+                      <select name="category" id="customercategory">
+                        <option value="AMC">AMC</option>
+                        <option value="PERCALL">PERCALL</option>
+    
+                      </select>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="section3 sections">
+              <div class="heading">
+                <h3>
+                  Customer Details
+                </h3>
+              </div>
+              <div class="customerdetails">
+                <input type="number" id="customermobilenumber" placeholder="Customer Mobile Number">
+                <input type="text" id="customerName" placeholder="Customer Name ">
+                <input type="text" id="customerAddress" placeholder="Customer Address">
+                <input type="text" id="companyName " placeholder="Company Name">
+                <input type="text" id="companyGst" placeholder="Company GST Number">
+              </div>
+            </div>
+            <div class="section4 sections">
+              <div class="heading">
+                <h3>
+                  Product Details
+                </h3>
+              </div>
+              <div class="productdetails">
+                
+                <input type="text" id="productName" placeholder="Product Name ">
+                <input type="text" id="productModel" placeholder="Product Model Address">
+                <input type="text" id="productSerial " placeholder="Product Serial Number">
+              </div>
+            </div>
+            <div class="section5 sections">
+              <div class="section51">
+                <div class="heading">
+                  <h5>Issue Description</h5>
+                  <textarea id="productIssue" placeholder="Enter the Product Issue"></textarea>
+                </div>
+              </div>
+              <div class="section52">
+                <div class="heading">
+                  <h5>Customer Comments </h5>
+                  <textarea id="customerIssue" placeholder="Enter the Customer Comment"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="section6 secti">
+              <div class="button">
+                Submit
+              </div>
+            </div>
+  
+           
+          </div>
+        </div>
+      </div>
+      <div class="reports" id="reports" style="display: none;">
+        <h1>Reports</h1>
+        <div class="charts">
+          <div class="chart">
+            <h2>Orders</h2>
+            <canvas id="orders-chart" width="400" height="200"></canvas>
+          </div>
+          <div class="chart">
+            <h2>Revenue</h2>
+            <canvas id="revenue-chart" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/form.js"></script>
+  <script type="module" src="./scripts/form.js"></script>
+</body>
+</html>
